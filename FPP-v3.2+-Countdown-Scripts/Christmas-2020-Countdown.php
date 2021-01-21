@@ -1,12 +1,12 @@
 #!/usr/bin/php
 <?php
-	## BUG TO FIX: Countdown didn't work right on 11/1
+    ## BUG TO FIX: Countdown broken for 11/1
 
     #############################################################################
     # Setup some variables (this is the part you want to edit for font, color, etc.)
     $host  = "localhost";    # Host/ip of the FPP instance with the matrix
     $name  = "Matrix_Overlay_Bottom";       # PixelOverlay Model Name
-    $color = "#8000FF";      # Text Color (also names like 'red', 'blue', etc.)
+    $color = "#00FF00";      # Text Color (also names like 'red', 'blue', etc.)
     $font  = "Helvetica";    # Font Name
     $size  = 46;             # Font size
     $pos   = "Center";          # Position: 'Center', 'L2R', 'R2L', 'T2B', 'B2T'
@@ -14,17 +14,12 @@
     $antiAlias = true;      # Anti-Alias the text
 
     $name_top  = "Matrix_Overlay_Top";       # PixelOverlay Model Name
-    $color_top = "#FF4000";      # Text Color (also names like 'red', 'blue', etc.)
+    $color_top = "#FF0000";      # Text Color (also names like 'red', 'blue', etc.)
     $size_top  = 26;             # Font size
     $antiAlias_top = true;      # Anti-Alias the text
     $msg_top = "Next Show";
 
-    # Date range in October sets start time 7pm -> 6:30pm from the 24th -> 6pm on the 31st
-    $Showtime = new DateTime('20:00');
-    if (date('j') >= 31)
-        $Showtime = new DateTime('18:00');
-    elseif (date('j') >= 9)
-        $Showtime = new DateTime('19:00');
+    $Showtime = new DateTime('18:00');
     $Showtime = $Showtime->getTimestamp();
 
     #############################################################################
@@ -39,7 +34,7 @@
 	if ($diff <= 0)
 	    $running = false;
 
-	$diff += 89; // Add offset to line up with first song countdown
+	$diff += 71; // Add offset to line up with first song countdown
 
         $minsDiff = (int)($diff / 60);
         $secsDiff = $diff % 60;
